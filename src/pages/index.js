@@ -7,7 +7,7 @@ import { settingsState } from '../export/state'
 // import { Cart, openCart, addToCart } from '../../dist'
 import logo from '../img/logo.svg'
 
-import * as standardPayment from '../export/plugins/zygote-plugin-standard-billing'
+//import * as standardPayment from '../export/plugins/zygote-plugin-standard-billing'
 
 const exposeSettings = [
 	`paypalAppId`,
@@ -55,7 +55,7 @@ export default class HomePage extends React.Component {
 												onChange={changeHandler.bind(this)}
 											/>
 										</label>
-									</div>
+									</div>,
 								)
 							}
 							return els
@@ -88,7 +88,7 @@ export default class HomePage extends React.Component {
 
 					}}
 					plugins={[
-						standardPayment,
+					//	standardPayment,
 					]}
 					// splitName={true}
 
