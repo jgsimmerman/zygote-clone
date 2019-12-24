@@ -764,10 +764,10 @@
           <h1 id="configurations">Configurations</h1>
 <h2 id="settings">Settings</h2>
 <pre class="highlight javascript"><code>  &lt;Cart
-    shipping: <span class="hljs-literal">true</span>
-    tax: <span class="hljs-literal">true</span>
-    coupons: <span class="hljs-literal">true</span>
-    splitName: <span class="hljs-literal">false</span>
+    <span class="hljs-attr">shipping</span>: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">tax</span>: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">coupons</span>: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">splitName</span>: <span class="hljs-literal">false</span>
     showStates={<span class="hljs-string">`["state-list", "dc-list"]`</span>}
   /&gt;</code></pre><p>Here are a few configurations you can turn on and off on a cart per cart basis.</p>
 <table>
@@ -802,7 +802,7 @@
 <pre class="highlight javascript"><code><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> EscaAPI <span class="hljs-keyword">from</span> <span class="hljs-string">'@escaladesports/zygote-plugin-esca-api'</span>
 
   &lt;Cart
-    plugins: {[ EscaAPI ]}
+    <span class="hljs-attr">plugins</span>: {[ EscaAPI ]}
   /&gt;</code></pre><table>
 <thead>
 <tr>
@@ -901,9 +901,9 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
   <span class="hljs-attr">modifications</span>: [
     {
       <span class="hljs-attr">id</span>: <span class="hljs-string">'50OFF'</span> <span class="hljs-comment">// Coupon code</span>
-      description: <span class="hljs-string">'Spring savings event'</span>, <span class="hljs-comment">// Used in subtotal as a label</span>
-      value: <span class="hljs-string">'-5000'</span>, <span class="hljs-comment">// Negative, cent representation of discount</span>
-      type: <span class="hljs-string">'discount'</span> <span class="hljs-comment">// Metadata you can later use in your plugins</span>
+      <span class="hljs-attr">description</span>: <span class="hljs-string">'Spring savings event'</span>, <span class="hljs-comment">// Used in subtotal as a label</span>
+      <span class="hljs-attr">value</span>: <span class="hljs-string">'-5000'</span>, <span class="hljs-comment">// Negative, cent representation of discount</span>
+      <span class="hljs-attr">type</span>: <span class="hljs-string">'discount'</span> <span class="hljs-comment">// Metadata you can later use in your plugins</span>
     }
   ]
 }</code></pre><p>Coupons are represented by a single text field that should either be validated through a plugin or via your payment gateway. If validating with a plugin, be sure to return a valid modification object for Zygote to keep track of. Coupons are validated <strong>after</strong> fetching the <code>infoWebhook</code>.</p>
@@ -986,14 +986,14 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
 
   <span class="hljs-keyword">let</span> quantityModifications = []
   <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.com/stock`</span>, { <span class="hljs-comment">// Check stock for each item in order</span>
-    method: <span class="hljs-string">`post`</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">`post`</span>,
     <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(response.products),
   })
     .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())
     .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
       response.products.map(<span class="hljs-function"><span class="hljs-params">prod</span> =&gt;</span> {
         quantityModifications.push({ <span class="hljs-comment">// Loops over products and builds array of product ids with their available stock</span>
-          id: prod.id,
+          <span class="hljs-attr">id</span>: prod.id,
           <span class="hljs-attr">available</span>: res[prod.id].stock),
         }
       })
@@ -1016,7 +1016,7 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
         }
 
         <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.com/coupons`</span>, { <span class="hljs-comment">// Get packing dimensions</span>
-            method: <span class="hljs-string">`post`</span>,
+            <span class="hljs-attr">method</span>: <span class="hljs-string">`post`</span>,
             <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(check),
     })
       .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())
@@ -1030,7 +1030,7 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
           }
           <span class="hljs-keyword">else</span> {
             response.modifications.push({ <span class="hljs-comment">// Add valid coupon to modifications array</span>
-              id: coupon.code,
+              <span class="hljs-attr">id</span>: coupon.code,
               <span class="hljs-attr">description</span>: coupon.label,
               <span class="hljs-attr">value</span>: coupon.discount,
               <span class="hljs-attr">type</span>: coupon.type
@@ -1053,7 +1053,7 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
   }
 
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.com/taxes`</span>, { <span class="hljs-comment">// Get taxes</span>
-    method: <span class="hljs-string">`post`</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">`post`</span>,
     <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(checkTax),
   })
     .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json())
@@ -1087,7 +1087,7 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
 
   <span class="hljs-keyword">let</span> shippingMethods = []
   <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.com/shipping`</span>, { <span class="hljs-comment">// Get taxes</span>
-    method: <span class="hljs-string">`post`</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">`post`</span>,
     <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(shipping),
   })
     .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json())
@@ -1115,7 +1115,7 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
 <h2 id="preorder">preOrder</h2>
 <pre class="highlight javascript"><code><span class="hljs-keyword">const</span> preOrder = <span class="hljs-keyword">async</span> ({ preFetchData, info }) =&gt; {
   <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.com/getTracking`</span>, { <span class="hljs-comment">// Call some service to do work before the order is placed</span>
-    method: <span class="hljs-string">`post`</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">`post`</span>,
     <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(preFetchData),
   })
 
@@ -1124,7 +1124,7 @@ By default, if a PayPal App ID is provided, the express checkout button will be 
 <h2 id="postorder">postOrder</h2>
 <pre class="highlight javascript"><code><span class="hljs-keyword">const</span> postOrder = <span class="hljs-keyword">async</span> ({ response, info, preFetchData }) =&gt; {
   <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.com/trackOrder`</span>, { <span class="hljs-comment">// Save order info to another service after the order is placed</span>
-    method: <span class="hljs-string">`post`</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">`post`</span>,
     <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(response),
   })
 
