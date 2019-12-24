@@ -9,7 +9,7 @@ export class Payment extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				
+				test
 			</Fragment>
 		)
 	}

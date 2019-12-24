@@ -88,7 +88,7 @@ export default class HomePage extends React.Component {
 
 					}}
 					plugins={[
-						//standardPayment,
+						standardPayment,
 					]}
 					// splitName={true}
 
