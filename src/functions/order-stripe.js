@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import {
 	submitStripeOrder,
-	sendSparkpostConfirmation,
+	//sendSparkpostConfirmation,
 } from '../export/server'
 dotenv.config({ silent: true })
 
@@ -13,16 +13,16 @@ export async function handler({ body }) {
 		verbose: true,
 	})
 
-	if (res.success === true) {
-		await sendSparkpostConfirmation({
-			sparkpostApiSecret: process.env.SPARKPOST_API_SECRET,
-			body,
-			from: `noreply@escaladeinc.com`,
-			bcc: ``,
-			logo: ``,
-			verbose: true,
-		})
-	}
+	// if (res.success === true) {
+	// 	await sendSparkpostConfirmation({
+	// 		sparkpostApiSecret: process.env.SPARKPOST_API_SECRET,
+	// 		body,
+	// 		from: `noreply@example.com`,
+	// 		bcc: ``,
+	// 		logo: ``,
+	// 		verbose: true,
+	// 	})
+	// }
 
 	return {
 		statusCode: 200,

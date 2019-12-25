@@ -2,22 +2,10 @@ import React, { Fragment } from 'react'
 import { fetchWebhook } from '../../export/utils/fetch'
 
 const getShippingMethods = async ({ response, info, preFetchData }) => {
-	// const shipping = {
-	// 	destination: {
-	// 		street1: info.shippingAddress1,
-	// 		street2: info.shippingAddress2,
-	// 		city: info.shippingCity,
-	// 		state: info.shippingStateAbbr,
-	// 		zip: info.shippingZip,
-	// 		country: `US`,
 
-	// 		company: info.shippingCompany || ``,
-	// 		phone: info.infoPhone || ``,
-	// 	},
-	// 	products: response.products,
-	// }
+	let shippingMethods = []
 
-	let shippingMethods = [
+	let shippingOptions = [
 		{
 			id: `ship-0`,
 			description: `Standard Shipping`,
@@ -30,6 +18,7 @@ const getShippingMethods = async ({ response, info, preFetchData }) => {
 					return 995
 				}
 			},
+			addInfo: ``,
 		},
 		{
 			id: `ship-1`,
@@ -43,6 +32,7 @@ const getShippingMethods = async ({ response, info, preFetchData }) => {
 					return 1895
 				}
 			},
+			addInfo: ``,
 		},
 		{
 			id: `ship-2`,
@@ -56,6 +46,7 @@ const getShippingMethods = async ({ response, info, preFetchData }) => {
 					return 3495
 				}
 			},
+			addInfo: ``,
 		},
 		{
 			id: `ship-3`,
@@ -63,10 +54,20 @@ const getShippingMethods = async ({ response, info, preFetchData }) => {
 			value: () => {
 				if (info.totals.subtotal > 4999) {
 					return 0
-				} else return `Spend $50 or more to unlock free shipping!`
+				} else return `Spend $75 or more to unlock free shipping!`
 			},
+			addInfo: ``,
 		},
 	]
+
+	shippingMethods = shippingOptions.map(option => (
+		{
+			id: option.id,
+			description: option.label,
+			value: option.value,
+			addInfo: `Get it ${option.eta}!`,
+		}
+	))
 
 	return {
 		...response,
