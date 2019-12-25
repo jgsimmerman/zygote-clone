@@ -1,6 +1,6 @@
 import React from 'react'
-//import classNames from 'classnames'
-//import InputMask from './input-mask'
+import classNames from 'classnames'
+import InputMask from './input-mask'
 
 import registerInput from '../../utils/register-input'
 import unregisterInput from '../../utils/unregister-input'
@@ -81,9 +81,82 @@ export default class Input extends React.Component{
 		unregisterInput(this)
 	}
 	render(){
-		
+		const {
+			value,
+			focus,
+			error,
+			userEditing,
+		} = this.state
+		const {
+			label,
+			mask,
+			unmask,
+			type,
+			autoComplete,
+			name,
+			inputRef,
+			checked,
+			value: defaultVal,
+		} = this.props
+
 		return (
-			<p>test</p>
+			<label
+				className={classNames(
+					`zygoteInputWrapper`,
+					focus && `zygoteInputFocus`,
+					error && `zygoteInputErr`,
+				)}
+				ref={el => this.wrapper = el}
+			>
+				<span
+					className={classNames(
+						`zygoteInputLabel`,
+						(defaultVal || value || focus) && `zygoteInputLabelMoved`,
+					)}
+				>
+					{label}
+				</span>
+				{mask && (
+					<InputMask
+						mask={mask}
+						unmask={unmask || true}
+						onAccept={(value) => {
+							let userEditing = true
+							this.setState({ value: value, userEditing })
+						}}
+						onFocus={this.handleFocus}
+						onBlur={this.validate}
+						value={userEditing ? value : defaultVal || value}
+						type={type || `text`}
+						autoComplete={autoComplete}
+						inputRef={el => {
+							this.input = el
+						}}
+						className='zygoteInput'
+						name={name}
+					/>
+				)}
+				{!mask && (
+					<input
+						type={type || `text`}
+						autoComplete={autoComplete}
+						ref={input => {
+							this.input = input
+							inputRef(input)
+						}}
+						value={userEditing ? value : defaultVal || value}
+						name={name}
+						className='zygoteInput'
+						onChange={this.handleChange}
+						onFocus={this.handleFocus}
+						onBlur={this.validate}
+						checked={checked}
+					/>
+				)}
+				{error && (
+					<span className='zygoteInputErrMsg' data-error>{error}</span>
+				)}
+			</label>
 		)
 	}
 	static styles = ({ altBackgroundColor, altBorderColor }) => ({
