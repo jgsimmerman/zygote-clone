@@ -7,7 +7,7 @@ import { settingsState } from '../export/state'
 // import { Cart, openCart, addToCart } from '../../dist'
 import logo from '../img/logo.svg'
 
-//import * as standardPayment from '../export/plugins/zygote-plugin-standard-billing'
+import * as getShippingMethods from '../export/plugins/zygote-plugin-shipping'
 
 const exposeSettings = [
 	`paypalAppId`,
@@ -74,9 +74,9 @@ export default class HomePage extends React.Component {
 					infoWebhook='/.netlify/functions/info-stripe'
 					orderWebhook='/.netlify/functions/order-stripe'
 
-					auth0ClientID='Wweg1YAs6kJquv9DcLSpmSNpaY6XPaX8'
-					auth0Logout='http://localhost:8000/'
-					auth0Domain='zygote-cart.auth0.com'
+					//auth0ClientID='Wweg1YAs6kJquv9DcLSpmSNpaY6XPaX8'
+					//auth0Logout='http://localhost:8000/'
+					//auth0Domain='zygote-cart.auth0.com'
 					auth0Theme={{
 						primaryColor: `#00cfff`,
 					}}
@@ -88,7 +88,7 @@ export default class HomePage extends React.Component {
 
 					}}
 					plugins={[
-					//	standardPayment,
+						getShippingMethods,
 					]}
 					// splitName={true}
 

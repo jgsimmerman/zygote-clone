@@ -1,6 +1,6 @@
 {
   "name": "zygote-cart-clone",
-  "version": "3.0.61",
+  "version": "3.0.63",
   "license": "MIT",
   "scripts": {
     "build": "npm run build:module && npm run docs",
@@ -17,8 +17,6 @@
     "dev:functions": "netlify-lambda serve src/functions",
     "env": "node utils/env",
     "lint": "eslint ./",
-    "live": "opn https://zygote3.netlify.com/",
-    "netlify": "opn https://app.netlify.com/sites/zygote3/deploys",
     "patch": "node utils/patch",
     "precommit": "lint-staged",
     "prepublishOnly": "npm run build",
@@ -26,7 +24,6 @@
     "serve": "gatsby serve --open",
     "test": "npm run test:module",
     "test:module": "npm run build:module && jest",
-    "travis": "opn https://travis-ci.org/escaladesports/zygote-cart/branches",
     "docs": "slate-cli build",
     "docs:serve": "slate-cli serve"
   },

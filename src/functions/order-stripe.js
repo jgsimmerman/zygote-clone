@@ -18,8 +18,8 @@ export async function handler({ body }) {
 			sparkpostApiSecret: process.env.SPARKPOST_API_SECRET,
 			body,
 			from: `noreply@escaladeinc.com`,
-			bcc: `krose@escaladesports.com`,
-			logo: `https://project-boilerplate.netlify.com/backend-logo.png`,
+			bcc: ``,
+			logo: ``,
 			verbose: true,
 		})
 	}

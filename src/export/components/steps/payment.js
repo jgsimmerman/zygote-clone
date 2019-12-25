@@ -20,7 +20,8 @@ import State from '../inputs/state'
 import Zip from '../inputs/zip'
 // import Paypal from '../paypal'
 import previousStep from '../../utils/previous-step'
-import StandardPayment from '../standard-payment'
+// import StandardPayment from '../standard-payment'
+
 export default class PaymentStep extends React.Component {
 	constructor(props) {
 		super(props)
