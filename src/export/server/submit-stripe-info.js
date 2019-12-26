@@ -62,6 +62,14 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 					country: `US`,
 				},
 			},
+			shipping_methods: [
+				{
+					id: body.id,  
+					amount: body.value,
+					description: body.description,
+				},
+			],
+			//selected_shipping_method: body.selected_shipping_method
 		}
 		if (body.coupon) {
 			obj.coupon = body.coupon

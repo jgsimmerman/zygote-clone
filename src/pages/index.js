@@ -88,7 +88,7 @@ export default class HomePage extends React.Component {
 
 					}}
 					plugins={[
-						getShippingMethods,
+						// getShippingMethods,
 					]}
 					// splitName={true}
 
