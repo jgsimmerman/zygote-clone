@@ -69,8 +69,8 @@ export default class HomePage extends React.Component {
 					cartFooter={<div className={styles.footer}>* Free shipping, except Alaska and Hawaii</div>}
 
 					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
-					paypalAppId='AeLnykBc0v7TfaCiuBfWMgX-6nkcNSw_PXb_puQrPyAQPqrofapoYQWKU2YtYGrBoGnt7_66Za17eA-c'
-					paypalEnv='sandbox'
+					//paypalAppId='AeLnykBc0v7TfaCiuBfWMgX-6nkcNSw_PXb_puQrPyAQPqrofapoYQWKU2YtYGrBoGnt7_66Za17eA-c'
+					//paypalEnv='sandbox'
 					infoWebhook='/.netlify/functions/info-stripe'
 					orderWebhook='/.netlify/functions/order-stripe'
 
