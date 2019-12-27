@@ -93,11 +93,11 @@ export default class HomePage extends React.Component {
 					// splitName={true}
 
 					totalModifications={[
-						{
-							id: `shipping`,
-							description: `Shipping`,
-							displayValue: `-`,
-						},
+						// {
+						// 	id: `shipping`,
+						// 	description: `Shipping`,
+						// 	displayValue: `-`,
+						// },
 						{
 							id: `tax`,
 							description: `Tax`,
