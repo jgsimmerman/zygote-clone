@@ -18,22 +18,19 @@ export async function handler({ body }) {
 		],
 		shippingMethods: [
 			{
-				id: `ship-0`,
-				description: `Standard Shipping`,
-				value: 0,
+				id: `ship0`,
+				
 			},
 			{
-				id: `ship-1`,
-				description: `Express Shipping`,
-				value: 1150,
+				id: `ship1`,
+		
 			},
 			{
-				id: `ship-2`,
-				description: `Overnight Shipping`,
-				value: 4999,
+				id: `ship2`,
+			
 			},
 		],
-		selectedShippingMethod: `ship-0`,
+		selectedShippingMethod: `ship0`,
 		quantityModifications: [
 			{
 				id: `TESTA`,

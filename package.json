@@ -1,6 +1,6 @@
 {
   "name": "zygote-cart-clone",
-  "version": "3.0.87",
+  "version": "3.0.89",
   "license": "MIT",
   "scripts": {
     "build": "npm run build:module && npm run docs",
